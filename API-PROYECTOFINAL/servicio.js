@@ -4,6 +4,7 @@ const fs=require('fs')
 const flash=require('express-flash')
 const formidable= require('formidable')
 const session= require('express-session')
+const paginaweb = require('./routes/paginaweb')
 const  routerIndex =require('./routes/index')
 const  routerPerfiles =require('./routes/perfiles')
 const port = 3000
@@ -44,6 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 //Contenido estatico
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',routerIndex)
+app.use('/pw',paginaweb)
 app.use('/perfiles',routerPerfiles)
 
 

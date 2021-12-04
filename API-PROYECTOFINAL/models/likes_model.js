@@ -1,4 +1,5 @@
 const conexion = require("../config/conexion");
+const { obtener } = require("./perfil_model");
 module.exports = {
 
     actualizar(likes,dislikes,id_perfil){
@@ -10,5 +11,30 @@ module.exports = {
                 else resolve(resultados)
             })
         })
-    }
+    },
+
+    obtener(){
+        return new Promise((resolve,reject) => {
+            
+            conexion.query('select * from fotos_perfiles', (err,resultados)=>{
+                if(err)reject(err)
+                else resolve(resultados)
+            })
+    
+        })
+        },
+
+
+    obtenerporid(idperfil){
+        return new Promise((resolve,reject) => {
+                
+            conexion.query('select * from fotos_perfiles WHERE id_perfil =?',[idperfil], (err,resultados)=>{
+                if(err)reject(err)
+                else resolve(resultados)
+            })
+        
+        })
+    },
+
+
 }
