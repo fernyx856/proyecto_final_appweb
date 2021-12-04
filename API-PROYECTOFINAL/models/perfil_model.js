@@ -34,11 +34,11 @@ module.exports = {
         })
     },
 
-    actualizar(id,nombre,apellido_mat,apellido_pat,edad,ubicacion,acercade){
+    actualizar(id,nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade){
 
         return new Promise((resolve,reject)=>{
-            conexion.query('update perfil set nombre =?,apellido_mat = ?,apellido_pat=?,edad=?,'+
-            'ubicacion=?,acercade=? where id_perfil=?',[nombre,apellido_mat,apellido_pat,edad,ubicacion,acercade,id], (err)=>{
+            conexion.query('update perfil set nombre =?,apellido_pat = ?,apellido_mat=?,edad=?,'+
+            'ubicacion=?,acercade=? where id_perfil=?',[nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade,id], (err)=>{
                 if(err)reject(err);
                 else resolve();
             })

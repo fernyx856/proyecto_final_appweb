@@ -1,0 +1,49 @@
+
+    <div class="col-12">
+
+        <form method="post" action="/perfiles/actualizar">
+            
+            <input value="<%= perfil.id_perfil %>" name="id" type="hidden">    
+        
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input value="<%= perfil.nombre %>" id="nombre" placeholder="Nombre" class="form-control" type="text" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="apellido_pat">Apellido Paterno</label>
+                <input value="<%= perfil.apellido_pat%>" required id="apellido_pat" placeholder="Apllido paterno" class="form-control" type="text" name="apellido_pat">
+            </div>
+    
+            <div class="form-group">
+                <label for="apellido_mat">Apellido Materno</label>
+                <input  value="<%= perfil.apellido_mat %>" required id="apellido_mat" placeholder="Apllido materno" class="form-control" type="text" name="apellido_mat">
+            </div>
+    
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input value="<%= perfil.edad %>" required id="edad" placeholder="Edad" class="form-control" type="number" name="edad">
+            </div>
+    
+            <div class="form-group">
+                <label for="ubicacion">Ubicacion</label>
+                <input value="<%= perfil.ubicacion %>" required id="ubicacion" placeholder="Ubicacion" class="form-control" type="text" name="ubicacion">
+            </div>
+    
+            <div class="form-group">
+                <label for="acercade">Escriba un poco sobre usted</label>
+                <input value="<%= perfil.acercade %>" required id="acercade" placeholder="acercade" class="form-control" type="text" name="acercade">
+            </div>
+
+
+
+        <div class="form-group">
+            <button class="btn btn-success">Guardar</button>
+            <a href="/perfiles" class="btn btn-primary">Regresar</a>
+        </div>
+        
+        </form>
+
+
+    </div>
+
+
