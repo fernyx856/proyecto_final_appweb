@@ -1,0 +1,20 @@
+<mat-card>
+    <div>
+        <div class="contenedor-imagen">
+            <img src="{{resolverRuta()}}" alt=""/>
+        </div>
+        <div style="display: inline-block;vertical-align: top;">
+        
+            <h1>{{perfil.nombre}}</h1>
+            <h1>{{perfil.apellido_pat}}</h1>
+            <h1>{{perfil.apellido_mat}}</h1>
+            <h1>{{perfil.edad}}</h1>
+            <h1>{{perfil.ubicacion}}</h1>
+            <h1>{{perfil.acercade}}</h1>
+            <button (click)="detalles()" mat-stroked-button color="warn">
+                Ver detalles
+            <mat-icon>arrow_right</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-card>

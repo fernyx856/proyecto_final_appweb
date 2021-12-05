@@ -2,7 +2,7 @@
 <button (click)="navegarAFormulario()" mat-button color='accent' mat-raised-button>
   Agregar Perfiles
 </button>
-<table class="mat-elevation-z13" *ngIf="Perfiles.length>0" mat-table [dataSource]="perfiles">
+<table class="mat-elevation-z13" *ngIf="perfiles.length>0" mat-table [dataSource]="perfiles">
   <ng-container matColumnDef="nombre">
     <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
@@ -26,15 +26,6 @@
   <ng-container matColumnDef="acercade">
     <mat-header-cell *matHeaderCellDef>Acerca de</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.acercade}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="eliminar">
-    <mat-header-cell *matHeaderCellDef>eliminar</mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      <button (click)="eliminar(element)" mat-icon-button color="warn">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-cell>
   </ng-container>
 <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
 <mat-row *matRowDef="let row;columns:columnas"></mat-row>

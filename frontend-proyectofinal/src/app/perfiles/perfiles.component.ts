@@ -11,7 +11,7 @@ import { PerfilesService } from '../perfiles.service';
 
 export class PerfilesComponent implements OnInit {
   public perfiles = [];
-  public columnas = ['nombre','Apellido Paterno','Apellido Materno','Edad','Ubicacion','Acerca de'];
+  public columnas = ['nombre','apellido_pat','apellido_mat','edad','ubicacion','acercade'];
   
   constructor(private router: Router,private perfilesService: PerfilesService) { 
 

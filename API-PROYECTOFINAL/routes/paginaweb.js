@@ -4,7 +4,7 @@ const perfilModel = require("../models/perfil_model")
 const likesModel = require("../models/likes_model")
 const formidable = require("formidable")
 const path = require("path")
-fs = require(fs)
+fs = require("fs")
 const {v4: uuidv4} = require("uuid")
 DIRECTORIO_FOTOS = path.join("C:\\Users\\ferna\\users\\gi\\Lachacalosa\\API-Clase-master\\API-Clase-master\\fotos_productos");
 
@@ -84,3 +84,5 @@ app.delete("/perfiles", async (req, res) => {
     perfil.fotos = await perfilModel.obtenerFotos(req.query.id);
     res.json(perfil);
   });
+
+  module.exports= app

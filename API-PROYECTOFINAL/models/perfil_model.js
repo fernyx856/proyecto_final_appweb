@@ -117,7 +117,7 @@ module.exports = {
     obtenerPrimerFoto(id_perfil){
         return new Promise((resolve, reject) => {
             conexion.query('select foto from fotos_perfiles'
-            +' WHERE id_productos = ? limit 1',
+            +' WHERE id_perfil = ? limit 1',
             [id_perfil],
             (err, resultados) => {
               if (err) reject(err);
@@ -125,7 +125,7 @@ module.exports = {
                if( resultados.length>0){
                 resolve(resultados[0].foto);
             }else{
-                resolve('nodisp.png');
+                resolve('nodisp.jpg');
             }
             }
             });

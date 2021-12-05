@@ -11,6 +11,7 @@ export class PerfilesService {
   constructor(private http:HttpService) { }
 
   public async obtenerperfiles(){
+    console.log("si entre a checar los datos");
     return await this.http.get("/perfiles");
   }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Perfil } from './perfil';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend-proyectofinal';
+  public perfiles:Perfil[]=[];
+  title = 'Proyecto final';
 }
+
+
