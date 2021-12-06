@@ -7,6 +7,7 @@ const session= require('express-session')
 const paginaweb = require('./routes/paginaweb')
 const  routerIndex =require('./routes/index')
 const  routerPerfiles =require('./routes/perfiles')
+const cookieParser=require('cookie-parser')
 const port = 3000
 var app = express();
 
@@ -25,7 +26,7 @@ const DOMINIO_PERMITIDO_CORS = "http://localhost:4200",
   DIRECTORIO_FOTOS = path.join(__dirname, "fotos_perfiles"),
   DIRECTORIO_DIST = path.join(__dirname, "dist");
   
-  app.use("/fotos_perfil", express.static(DIRECTORIO_FOTOS));
+  app.use("/foto_perfil", express.static(DIRECTORIO_FOTOS));
   app.use("/", express.static(DIRECTORIO_DIST));
   
   if (!fs.existsSync(DIRECTORIO_FOTOS)) {
@@ -41,7 +42,7 @@ const DOMINIO_PERMITIDO_CORS = "http://localhost:4200",
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: false }));
 //npm install cookie-parser
-//app.use(cookieParser());
+app.use(cookieParser());
 //Contenido estatico
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',routerIndex)

@@ -27,6 +27,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {MatSliderModule} from '@angular/material/slider';
 import { TarjetaPerfilComponent } from './tarjeta-perfil/tarjeta-perfil.component';
 import { TodosperfilesComponent } from './todosperfiles/todosperfiles.component';
+import { AgregarPerfilesComponent } from './agregar-perfiles/agregar-perfiles.component';
+import { LoadingButtonComponent } from './loading-button/loading-button.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { TodosperfilesComponent } from './todosperfiles/todosperfiles.component'
     AppComponent,
     PerfilesComponent,
     TarjetaPerfilComponent,
-    TodosperfilesComponent
+    TodosperfilesComponent,
+    AgregarPerfilesComponent,
+    LoadingButtonComponent
   ],
   imports: [
     BrowserModule,

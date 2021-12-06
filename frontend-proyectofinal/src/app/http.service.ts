@@ -21,7 +21,7 @@ export class HttpService {
     return await respuestaRaw.json();
   }
 
-  public async formdata(ruta: string, payload: FormData) {
+  public async formdata(ruta: string, payload: any) {
     const respuestaRaw = await fetch(this.rutaServidor + ruta, {
       body: payload,
       method: "POST",

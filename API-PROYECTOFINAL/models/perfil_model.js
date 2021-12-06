@@ -69,7 +69,6 @@ module.exports = {
     agregarFoto(id_perfil,nombreFoto){
 
         return new Promise((resolve,reject)=>{
-    
             conexion.query('insert into fotos_perfiles (id_perfil,foto) '+
             'values  (?,?)',[id_perfil,nombreFoto],(err,resultados)=>{
                 if(err)reject(err);
@@ -115,6 +114,7 @@ module.exports = {
     },
 
     obtenerPrimerFoto(id_perfil){
+        console.log("a obtener primer foto si entre wex");
         return new Promise((resolve, reject) => {
             conexion.query('select foto from fotos_perfiles'
             +' WHERE id_perfil = ? limit 1',
@@ -123,6 +123,7 @@ module.exports = {
               if (err) reject(err);
               else {
                if( resultados.length>0){
+                console.log("si encontre la foto carnal");
                 resolve(resultados[0].foto);
             }else{
                 resolve('nodisp.jpg');

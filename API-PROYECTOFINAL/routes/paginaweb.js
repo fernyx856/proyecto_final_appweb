@@ -6,7 +6,7 @@ const formidable = require("formidable")
 const path = require("path")
 fs = require("fs")
 const {v4: uuidv4} = require("uuid")
-DIRECTORIO_FOTOS = path.join("C:\\Users\\ferna\\users\\gi\\Lachacalosa\\API-Clase-master\\API-Clase-master\\fotos_productos");
+DIRECTORIO_FOTOS = path.join("C:\\Users\\ferna\\Documents\\GitHub\\proyecto_final_appweb\\API-PROYECTOFINAL\\fotos_perfiles");
 
 app.delete("/perfiles", async (req, res) => {
 
@@ -26,20 +26,25 @@ app.delete("/perfiles", async (req, res) => {
     res.json(ventas);
   });
 
-  app.post('/fotos_perfiles', (req, res) => {
+
+
+  app.post('/fotos_perfil', (req, res) => {
     const form = formidable({
       multiples: true,
       uploadDir: DIRECTORIO_FOTOS,
     });
+
   
     form.parse(req, async (err, fields, files) => {
-      const idperfil = fields.idPerfil;
+      console.log(req);
+      const idPerfil = fields.id_perfil;
+      console.log(idPerfil)
       console.log(fields)
       console.log(files)
       for (let clave in files) {
         const file = files[clave];
         const nombreArchivo = file.name;
-        await productoModel.agregarFoto(idperfil, nombreArchivo)
+        await perfilModel.agregarFoto(idPerfil, nombreArchivo)
       }
     });
   

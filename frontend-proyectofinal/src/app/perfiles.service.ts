@@ -11,7 +11,6 @@ export class PerfilesService {
   constructor(private http:HttpService) { }
 
   public async obtenerperfiles(){
-    console.log("si entre a checar los datos");
     return await this.http.get("/perfiles");
   }
 
@@ -27,7 +26,8 @@ export class PerfilesService {
   }
 
   public async agregarFotosDePerfil(fotos:FormData){
-    return await this.http.formdata("/fotos_perfiles",fotos);
+    console.log(fotos);
+    return await this.http.formdata("/fotos_perfil",fotos);
   }
 
   public async obtenerPerfilesConFotos(){
