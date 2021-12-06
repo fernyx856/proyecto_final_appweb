@@ -26,7 +26,7 @@ export class PerfilesService {
   }
 
   public async agregarFotosDePerfil(fotos:FormData){
-    console.log(fotos);
+    console.log(fotos.get("foto_0"));
     return await this.http.formdata("/fotos_perfil",fotos);
   }
 
