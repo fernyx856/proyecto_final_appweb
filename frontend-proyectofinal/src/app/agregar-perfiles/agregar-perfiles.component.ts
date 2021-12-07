@@ -2,6 +2,7 @@ import { Component, ElementRef,OnInit,ViewChild } from '@angular/core';
 import { Perfil } from '../perfil';
 import { PerfilesService } from '../perfiles.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { fotoperfil } from '../foto';
 
 @Component({
   selector: 'app-agregar-perfiles',
@@ -12,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AgregarPerfilesComponent implements OnInit {
 
   perfilModel = new Perfil("","","",0,"","",0);
+  fotografia = new fotoperfil("",0);
 
   @ViewChild("foto",{
     read: ElementRef
@@ -52,14 +54,9 @@ export class AgregarPerfilesComponent implements OnInit {
     this.cargando = true;
 
     const idperfilguardado = await this.perfilService.agregarPerfil(this.perfilModel);
-
-    const fd = new FormData();
-    for (let x = 0; x < archivos.length; x++) {
-      fd.append(`foto_${x}`, archivos[x])
-    }
-    fd.append("id_perfil", idperfilguardado);
-    console.log("id: "+idperfilguardado+"Nombre de la foto: "+archivos)
-    const respuesta = await this.perfilService.agregarFotosDePerfil(fd);
+    this.fotografia.foto = archivos[0].name;
+    this.fotografia.id_perfil = idperfilguardado;
+    const respuesta = this.perfilService.agregarfotodeperfil(this.fotografia);
     this.snackbar.open("Perfil guardado", "", {
       duration: 1500,
       horizontalPosition: "start",

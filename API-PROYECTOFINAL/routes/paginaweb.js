@@ -54,6 +54,13 @@ app.delete("/perfil", async (req, res) => {
   
   });
 
+  app.post('/ponerfotoperfil',async(req,res)=>{
+    console.log("Recibi en el api imagen llamada "+req.body);
+    const perfil = req.body;
+    const respuesta = await perfilModel.agregarFoto(perfil.id_perfil,perfil.foto);
+    res.json(respuesta);
+  })
+
   app.post('/perfileditar',async (req,res)=>{
     console.log("Recibi en el api" + req.body.nombre);
     const perfil = req.body;
@@ -62,7 +69,6 @@ app.delete("/perfil", async (req, res) => {
   })
 
   app.post('/editarlikes',async(req,res)=>{
-    console.log("Si entre a editar" + req.body.id_perfil);
     const perfil = req.body;
     const respuesta = await likesModel.actualizar(perfil.likes,perfil.dislikes,perfil.id_perfil) ;
     res.json(respuesta);

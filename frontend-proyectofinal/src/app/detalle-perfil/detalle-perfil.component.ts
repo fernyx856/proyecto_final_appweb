@@ -65,13 +65,11 @@ export class DetallePerfilComponent implements OnInit {
   }
 
   public editarlikes(like: likes){
-  console.log("Si entre a modificar a "+ like.id_perfil)
   like.likes = like.likes +1;
    this.perfilservice.actualizarLikes(like);
   }
 
   public editardislikes(like: likes){
-    console.log("Si entre a modificar a "+ like.id_perfil)
     like.dislikes = like.dislikes +1;
      this.perfilservice.actualizarLikes(like);
     }

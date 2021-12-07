@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Perfil } from './perfil';
 import { likes } from './likes';
+import { fotoperfil } from './foto';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -30,6 +31,11 @@ export class PerfilesService {
     return await this.http.formdata("/fotos_perfil",fotos);
   }
 
+  public async agregarfotodeperfil(fotoperfil:fotoperfil){
+      console.log("Nombre de la foto: "+fotoperfil.foto+" id del perfil: "+fotoperfil.id_perfil);
+      return await this.http.post("/ponerfotoperfil",fotoperfil);
+  }
+
   public async obtenerPerfilesConFotos(){
     return await this.http.get("/perfiles_con_fotos");
   }
@@ -43,12 +49,10 @@ export class PerfilesService {
   }
 
   public async actualizarPerfil(perfil : Perfil){
-    console.log("Si recibi en el servicio para modiciar a "+ perfil.id_perfil)
     return await this.http.post("/perfileditar",perfil);
   }
 
   public async actualizarLikes(like : likes){
-    console.log("Si recibi en el servicio para modiciar a "+ like.id_perfil)
     return await this.http.post("/editarlikes",like);
   }
 
