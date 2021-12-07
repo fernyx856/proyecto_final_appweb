@@ -30,9 +30,21 @@
 
 
         <tr>
-        <td colspan="14" style="text-align: right;">
+        <td colspan="14" style="text-align: center;">
             <p>Ubicacion</p>
             <p>{{perfil.ubicacion}}</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7">
+            <p>Likes</p>
+            <p>{{like.likes}}</p>
+            <button style="text-align: right;"(click)="editarlikes(like)">Dar like</button>
+        </td>
+        <td colspan="8">
+            <p>Dislikes</p>
+            <p>{{like.dislikes}}</p>
+            <button style="text-align: right;" (click)="editardislikes(like)">Dar dislike</button>
         </td>
     </tr>
         

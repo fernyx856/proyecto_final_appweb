@@ -2,39 +2,37 @@ const conexion = require("../config/conexion");
 const { obtener } = require("./perfil_model");
 module.exports = {
 
-    actualizar(likes,dislikes,id_perfil){
-        return new promise((resolve,reject)=>{
 
-            conexion.query('UPDATE tabla_likes SET likes=?, dislikes=? WHERE id_perfil=?',[likes,dislikes,id_perfil],
-            (err,resultados)=>{
+    agregarlikes(id_perfil){
+        return new Promise((resolve,reject)=>{
+            conexion.query('INSERT INTO tabla_likes (id_perfil,likes,dislikes) VALUES (?,0, 0);',[id_perfil], (err,resultados)=>{
                 if(err)reject(err)
                 else resolve(resultados)
             })
         })
     },
 
-    obtener(){
-        return new Promise((resolve,reject) => {
-            
-            conexion.query('select * from fotos_perfiles', (err,resultados)=>{
+    actualizar(likes,dislikes,id_perfil){
+
+        return new Promise((resolve,reject)=>{
+            conexion.query('UPDATE tabla_likes SET likes=?, dislikes=? WHERE id_perfil=?',[likes,dislikes,id_perfil], (err,resultados)=>{
                 if(err)reject(err)
                 else resolve(resultados)
             })
-    
+        })
+    },
+
+    obtenerlikes(id){
+        return new Promise((resolve,reject) => {
+            conexion.query('select * from tabla_likes Where id_perfil = ?',[id], (err,resultados)=>{
+                console.log(resultados);
+                if(err)reject(err);
+                else resolve(resultados)
+            })
         })
         },
 
 
-    obtenerporid(idperfil){
-        return new Promise((resolve,reject) => {
-                
-            conexion.query('select * from fotos_perfiles WHERE id_perfil =?',[idperfil], (err,resultados)=>{
-                if(err)reject(err)
-                else resolve(resultados)
-            })
-        
-        })
-    },
 
 
 }

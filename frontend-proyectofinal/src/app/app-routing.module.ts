@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'todosperfiles',component: TodosperfilesComponent},
   {path: 'perfiles/agregar',component: AgregarPerfilesComponent},
   {path: 'perfil/:id', component: DetallePerfilComponent},
-  {path:  'perfil/editar/:id',component: EditarPerfilesComponent}
+  {path: 'perfil/editar/:id',component: EditarPerfilesComponent}
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PerfilesService } from '../perfiles.service';
 import { ActivatedRoute } from '@angular/router';
 import { Perfil } from '../perfil';
+import { likes } from '../likes';
 import { environment } from 'src/environments/environment';
 import { Action } from 'rxjs/internal/scheduler/Action';
 
@@ -22,8 +23,15 @@ export class DetallePerfilComponent implements OnInit {
     edad: 0,
     acercade: "",
     likes:0,
-    dislikes:0
+    dislikes:0,
   }
+
+  public like: any={
+    likes:0,
+    dislikes:0,
+    id_perfil:0,
+  }
+
 
   public fotoseleccionada:string="";
   public indiceSeleccionado=0;
@@ -33,7 +41,8 @@ export class DetallePerfilComponent implements OnInit {
 
   async ngOnInit(){
     const id = this.activatedroute.snapshot.paramMap.get("id");
-    this.perfil = await this.perfilservice.obtenerPerfilesConFotosPorId(id!);
+    this.perfil = await this.perfilservice.obtenerPerfilConLikeyfotoporid(id!);
+    this.like = this.perfil.likes[0];
     if(this.perfil.fotos.length>=0){
       this.seleccionarImagen(0);
     }
@@ -54,5 +63,17 @@ export class DetallePerfilComponent implements OnInit {
   async refreshState(){
     const id=this.perfil.id_perfil;
   }
+
+  public editarlikes(like: likes){
+  console.log("Si entre a modificar a "+ like.id_perfil)
+  like.likes = like.likes +1;
+   this.perfilservice.actualizarLikes(like);
+  }
+
+  public editardislikes(like: likes){
+    console.log("Si entre a modificar a "+ like.id_perfil)
+    like.dislikes = like.dislikes +1;
+     this.perfilservice.actualizarLikes(like);
+    }
 
 }

@@ -6,6 +6,7 @@ const formidable = require("formidable")
 const path = require("path")
 fs = require("fs")
 const {v4: uuidv4} = require("uuid")
+const likes_model = require('../models/likes_model')
 DIRECTORIO_FOTOS = path.join("C:\\Users\\ferna\\Documents\\GitHub\\proyecto_final_appweb\\API-PROYECTOFINAL\\fotos_perfiles");
 
 app.delete("/perfil", async (req, res) => {
@@ -17,14 +18,6 @@ app.delete("/perfil", async (req, res) => {
     await perfilModel.eliminar(idperfil);
     res.json(true);
   });
-
-
-
-  app.get("/likes", async (req, res) => {
-    const ventas = await likesModel.obtener();
-    res.json(ventas);
-  });
-
 
 
   app.post('/fotos_perfil', (req, res) => {
@@ -68,12 +61,22 @@ app.delete("/perfil", async (req, res) => {
     res.json(respuesta);
   })
 
+  app.post('/editarlikes',async(req,res)=>{
+    console.log("Si entre a editar" + req.body.id_perfil);
+    const perfil = req.body;
+    const respuesta = await likesModel.actualizar(perfil.likes,perfil.dislikes,perfil.id_perfil) ;
+    res.json(respuesta);
+  })
+
 
   app.post('/perfil', async (req, res) => {
     const perfil = req.body;
     const respuesta = await perfilModel.insertar(perfil.nombre, perfil.apellido_pat,perfil.apellido_mat,perfil.edad,perfil.ubicacion,perfil.acercade);
+    likesModel.agregarlikes(respuesta);
     res.json(respuesta);
   });
+
+  
   
   app.get('/perfiles', async (req, res) => {
     const perfiles = await perfilModel.obtener();
@@ -94,5 +97,16 @@ app.delete("/perfil", async (req, res) => {
     perfil.fotos = await perfilModel.obtenerFotos(req.query.id);
     res.json(perfil);
   });
+
+  app.get('/likes', async (req,res)=>{
+    if(!req.query.id){
+      res.end("not found");
+      return;
+    }
+    const perfil = await perfilModel.obtenerPorId(req.query.id);
+    perfil.likes = await likes_model.obtenerlikes(req.query.id);
+    perfil.fotos = await perfilModel.obtenerFotos(req.query.id);
+    res.json(perfil);
+  })
 
   module.exports= app
