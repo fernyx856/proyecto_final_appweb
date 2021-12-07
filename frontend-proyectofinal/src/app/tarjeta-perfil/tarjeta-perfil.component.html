@@ -4,14 +4,17 @@
             <img src="{{resolverRuta()}}" alt=""/>
         </div>
         <div style="display: inline-block;vertical-align: top;">
-            
-    
             <h1>Nombre: {{perfil.nombre}}</h1>
             <h1>Apellido Paterno: {{perfil.apellido_pat}}</h1>
             <h1>Apellido Materno: {{perfil.apellido_mat}}</h1>
             <h1>Edad: {{perfil.edad}}</h1>
             <h1>Ubicación: {{perfil.ubicacion}}</h1>
             <h1>Acerca de: {{perfil.acercade}}</h1>
+
+            <button (click)="detalles()" mat-stroked-button color="warn">
+                Ver detalles
+            <mat-icon>arrow_right</mat-icon>
+            </button>
         </div>
     </div>
 </mat-card>

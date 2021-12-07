@@ -1,0 +1,41 @@
+<mat-card>
+    
+
+
+
+    <table>
+        <td colspan="14" style="text-align: center;width: 1300px;">
+            <p>Perfil</p>
+        </td>
+        
+        <tr>
+        <td colspan="6" rowspan="2" style="text-align: center;">
+            <p>Acerca de: </p>
+            <p>{{perfil.acercade}}</p>
+        </td>
+
+        <td  style="text-align: center;" colspan="2">
+            <img *ngIf="fotoseleccionada"   [src]="resolverFoto(fotoseleccionada)" alt="">
+        </td>
+
+        <td colspan="6" >
+           <p>Detalles:</p> 
+           <br>
+           <p>Nombre</p>
+           <p>{{perfil.nombre}} {{perfil.apellido_pat}} {{perfil.apellido_mat}}</p>
+           <p>Edad</p>
+           <p>{{perfil.edad}}</p>
+        </td>
+        </tr>
+
+
+        <tr>
+        <td colspan="14" style="text-align: right;">
+            <p>Ubicacion</p>
+            <p>{{perfil.ubicacion}}</p>
+        </td>
+    </tr>
+        
+        </table>
+
+</mat-card>

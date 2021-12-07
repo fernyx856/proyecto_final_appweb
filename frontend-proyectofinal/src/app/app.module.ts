@@ -29,6 +29,8 @@ import { TarjetaPerfilComponent } from './tarjeta-perfil/tarjeta-perfil.componen
 import { TodosperfilesComponent } from './todosperfiles/todosperfiles.component';
 import { AgregarPerfilesComponent } from './agregar-perfiles/agregar-perfiles.component';
 import { LoadingButtonComponent } from './loading-button/loading-button.component';
+import { DetallePerfilComponent } from './detalle-perfil/detalle-perfil.component';
+import { EditarPerfilesComponent } from './editar-perfiles/editar-perfiles.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { LoadingButtonComponent } from './loading-button/loading-button.componen
     TarjetaPerfilComponent,
     TodosperfilesComponent,
     AgregarPerfilesComponent,
-    LoadingButtonComponent
+    LoadingButtonComponent,
+    DetallePerfilComponent,
+    EditarPerfilesComponent
   ],
   imports: [
     BrowserModule,

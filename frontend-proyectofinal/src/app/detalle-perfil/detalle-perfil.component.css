@@ -1,0 +1,39 @@
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  table {
+    border-collapse: separate;
+  }
+
+  td{
+    border: red 5px solid;
+    text-align: left;
+    background-color:brown;
+  }
+
+  
+  
+  mat-grid-tile.detalles ::ng-deep figure {
+    align-items: start !important;
+    justify-content: start !important;
+    display: block;
+    padding: 5px;
+  }
+  
+
+  
+  .mat-display-2 {
+    margin: 0;
+  
+  }
+
+  p{
+    font-size: 1.3rem;
+  }
+
+
+  
+  

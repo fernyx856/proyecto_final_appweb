@@ -22,7 +22,7 @@ export class TarjetaPerfilComponent implements OnInit {
   }
 
   public detalles(){
-    this.router.navigate(["/perfil/acercade",this.perfil.id_perfil]);
+    this.router.navigate(["/perfil/",this.perfil.id_perfil]);
   }
 
 }

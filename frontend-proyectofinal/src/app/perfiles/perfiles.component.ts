@@ -11,7 +11,7 @@ import { PerfilesService } from '../perfiles.service';
 
 export class PerfilesComponent implements OnInit {
   public perfiles = [];
-  public columnas = ['nombre','apellido_pat','apellido_mat','edad','ubicacion','acercade'];
+  public columnas = ['nombre','apellido_pat','apellido_mat','edad','ubicacion','acercade','Eliminar','Editar'];
   
   constructor(private router: Router,private perfilesService: PerfilesService) { 
 
@@ -22,7 +22,11 @@ export class PerfilesComponent implements OnInit {
       return;
     }
     await this.perfilesService.eliminarPerfil(perfil.id_perfil);
-    await this;
+    await this.obtenerPerfiles();
+  }
+
+  public editar(perfil : Perfil){
+    this.router.navigate(["/perfil/editar/",perfil.id_perfil]);
   }
 
 

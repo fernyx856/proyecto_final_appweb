@@ -22,6 +22,7 @@ export class HttpService {
   }
 
   public async formdata(ruta: string, payload: any) {
+    console.log("Ruta: "+ruta +" Archivo: " + payload)
     const respuestaRaw = await fetch(this.rutaServidor + ruta, {
       body: payload,
       method: "POST",

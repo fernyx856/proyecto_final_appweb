@@ -1,0 +1,60 @@
+<mat-card>
+
+    <h1>Editar perfil</h1>
+
+   
+    <p>
+        <mat-form-field>
+            <input matInput [(ngModel)]="perfilModel.nombre" type="text"
+            placeholder="Escriba nombre">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput [(ngModel)]="perfilModel.apellido_pat" type="text"
+            placeholder="Escriba apellido paterno">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput [(ngModel)]="perfilModel.apellido_mat" type="text"
+            placeholder="Escriba apellido materno">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput [(ngModel)]="perfilModel.edad" type="number"
+            placeholder="Escriba la edad">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput [(ngModel)]="perfilModel.ubicacion" type="text"
+            placeholder="Escriba la ubicacion">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <textarea row="10" matInput [(ngModel)]="perfilModel.acercade" 
+            placeholder="Escriba un poco sobre la persona"></textarea>
+        </mat-form-field>
+    </p>
+
+
+
+
+
+    <br>
+  
+
+    <p>
+        <!-- Boton de guardar -->
+        <app-loading-button
+        texto="Editar" (click)="editar(perfilModel)"></app-loading-button>
+        <a routerLink="/perfiles" mat-raised-button color="primary" style="margin-left: 10px;">
+        Volver
+        </a>
+    </p>
+
+</mat-card>
+

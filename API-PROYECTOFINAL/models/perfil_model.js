@@ -8,7 +8,7 @@ module.exports = {
     insertar(nombre,apellido_mat,apellido_pat,edad,ubicacion,acercade){
 
         return new Promise((resolve,reject) => {
-    
+            console.log("Aqui recibi los valores de "+nombre);
             conexion.query('insert into perfil (nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade)'+
            ' values (?,?,?,?,?,?)',[nombre,apellido_mat,apellido_pat,edad,ubicacion,acercade],(err,resultado) => {
                if (err)reject(err);
@@ -17,6 +17,18 @@ module.exports = {
         })
     
     
+    },
+
+    actualizar(id,nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade){
+    
+        return new Promise((resolve,reject)=>{
+            console.log("Entre a modificar a "+nombre);
+            conexion.query('update perfil set nombre =?,apellido_pat = ?,apellido_mat=?,edad=?,'+
+            'ubicacion=?,acercade=? where id_perfil=?',[nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade,id], (err,resultado)=>{
+                if(err)reject(err);
+                else resolve(resultado.insertId);
+            })
+        })
     },
 
 
@@ -34,16 +46,7 @@ module.exports = {
         })
     },
 
-    actualizar(id,nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade){
-
-        return new Promise((resolve,reject)=>{
-            conexion.query('update perfil set nombre =?,apellido_pat = ?,apellido_mat=?,edad=?,'+
-            'ubicacion=?,acercade=? where id_perfil=?',[nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade,id], (err)=>{
-                if(err)reject(err);
-                else resolve();
-            })
-        })
-    },
+    
     
     eliminar(id){
         return new Promise(async (resolve,reject)=>{
@@ -52,11 +55,11 @@ module.exports = {
               //await fs.unlinkSync(path.join(__dirname,"fotos_productos",fotos[i].foto))
             //}
     
-            /*conexion.query('delete from fotos_productos where id_productos =?',[id],
+            conexion.query('delete from fotos_perfiles where id_perfil =?',[id],
             (err)=>{
                 if(err)reject(err);
                 else resolve();
-            })*/
+            })
     
             conexion.query('delete from perfil where id_perfil =?',[id],
             (err)=>{

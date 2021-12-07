@@ -38,5 +38,10 @@ export class PerfilesService {
     return await this.http.get("/perfil?id=".concat(id_perfil));
   }
 
+  public async actualizarPerfil(perfil : Perfil){
+    console.log("Si recibi en el servicio para modiciar a "+ perfil.id_perfil)
+    return await this.http.post("/perfileditar",perfil);
+  }
+
  
 }

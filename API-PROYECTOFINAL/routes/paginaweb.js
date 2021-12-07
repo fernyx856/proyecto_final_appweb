@@ -8,8 +8,7 @@ fs = require("fs")
 const {v4: uuidv4} = require("uuid")
 DIRECTORIO_FOTOS = path.join("C:\\Users\\ferna\\Documents\\GitHub\\proyecto_final_appweb\\API-PROYECTOFINAL\\fotos_perfiles");
 
-app.delete("/perfiles", async (req, res) => {
-
+app.delete("/perfil", async (req, res) => {
     if (!req.query.id) {
       res.end("Not found");
       return;
@@ -36,7 +35,6 @@ app.delete("/perfiles", async (req, res) => {
 
   
     form.parse(req, async (err, fields, files) => {
-      console.log(req);
       const idPerfil = fields.id_perfil;
       console.log(idPerfil)
       console.log(fields)
@@ -62,6 +60,13 @@ app.delete("/perfiles", async (req, res) => {
     })
   
   });
+
+  app.post('/perfileditar',async (req,res)=>{
+    console.log("Recibi en el api" + req.body.nombre);
+    const perfil = req.body;
+    const respuesta = await perfilModel.actualizar(perfil.id_perfil,perfil.nombre,perfil.apellido_pat,perfil.apellido_mat,perfil.edad,perfil.ubicacion,perfil.acercade);
+    res.json(respuesta);
+  })
 
 
   app.post('/perfil', async (req, res) => {
