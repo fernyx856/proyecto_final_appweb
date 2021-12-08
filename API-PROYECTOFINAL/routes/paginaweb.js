@@ -62,7 +62,6 @@ app.delete("/perfil", async (req, res) => {
   })
 
   app.post('/perfileditar',async (req,res)=>{
-    console.log("Recibi en el api" + req.body.nombre);
     const perfil = req.body;
     const respuesta = await perfilModel.actualizar(perfil.id_perfil,perfil.nombre,perfil.apellido_pat,perfil.apellido_mat,perfil.edad,perfil.ubicacion,perfil.acercade);
     res.json(respuesta);
@@ -71,6 +70,12 @@ app.delete("/perfil", async (req, res) => {
   app.post('/editarlikes',async(req,res)=>{
     const perfil = req.body;
     const respuesta = await likesModel.actualizar(perfil.likes,perfil.dislikes,perfil.id_perfil) ;
+    res.json(respuesta);
+  })
+
+  app.post('/editarfoto',async(req,res)=>{
+    const perfil = req.body;
+    const respuesta = await perfilModel.actualizarimagen(perfil.id_perfil,perfil.foto);
     res.json(respuesta);
   })
 

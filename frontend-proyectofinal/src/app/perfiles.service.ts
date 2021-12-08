@@ -32,7 +32,6 @@ export class PerfilesService {
   }
 
   public async agregarfotodeperfil(fotoperfil:fotoperfil){
-      console.log("Nombre de la foto: "+fotoperfil.foto+" id del perfil: "+fotoperfil.id_perfil);
       return await this.http.post("/ponerfotoperfil",fotoperfil);
   }
 
@@ -50,6 +49,10 @@ export class PerfilesService {
 
   public async actualizarPerfil(perfil : Perfil){
     return await this.http.post("/perfileditar",perfil);
+  }
+
+  public async actualizarimagen(fotoperfil:fotoperfil){
+    return await this.http.post("/editarfoto",fotoperfil);
   }
 
   public async actualizarLikes(like : likes){

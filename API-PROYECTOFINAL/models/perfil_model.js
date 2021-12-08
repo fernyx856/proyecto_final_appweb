@@ -22,9 +22,19 @@ module.exports = {
     actualizar(id,nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade){
     
         return new Promise((resolve,reject)=>{
-            console.log("Entre a modificar a "+nombre);
             conexion.query('update perfil set nombre =?,apellido_pat = ?,apellido_mat=?,edad=?,'+
             'ubicacion=?,acercade=? where id_perfil=?',[nombre,apellido_pat,apellido_mat,edad,ubicacion,acercade,id], (err,resultado)=>{
+                if(err)reject(err);
+                else resolve(resultado.insertId);
+            })
+        })
+    },
+
+
+    actualizarimagen(id,foto){
+    
+        return new Promise((resolve,reject)=>{
+            conexion.query('UPDATE fotos_perfiles SET foto=? WHERE id_perfil=?',[foto,id], (err,resultado)=>{
                 if(err)reject(err);
                 else resolve(resultado.insertId);
             })
@@ -60,6 +70,10 @@ module.exports = {
                 if(err)reject(err);
                 else resolve();
             })
+
+            conexion.query('delete from tabla_likes where id_perfil =?',[id],(err)=>{
+                if(err)reject(err);
+                else resolve();})
     
             conexion.query('delete from perfil where id_perfil =?',[id],
             (err)=>{
