@@ -21,15 +21,17 @@ app.delete("/perfil", async (req, res) => {
 
 
   app.post('/fotos_perfil', (req, res) => {
+    console.log(req+" REQ1");
     const form = formidable({
       multiples: true,
       uploadDir: DIRECTORIO_FOTOS,
     });
-
+    
+    console.log(req.get("foto_0")+" REQ2");
   
     form.parse(req, async (err, fields, files) => {
+      console.log("xddddxd"+ req);
       const idPerfil = fields.id_perfil;
-      console.log(idPerfil)
       console.log(fields)
       console.log(files)
       for (let clave in files) {

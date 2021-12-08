@@ -21,14 +21,14 @@ export class HttpService {
     return await respuestaRaw.json();
   }
 
-  public async formdata(ruta: string, payload: any) {
-    console.log("Ruta: "+ruta +" Archivo: " + payload)
+  public async formdata(ruta: string, xd: FormData) {
+    console.log(xd.get("foto_0"))
     const respuestaRaw = await fetch(this.rutaServidor + ruta, {
-      body: payload,
+      body: xd,
       method: "POST",
     });
     return await respuestaRaw.json();
-  }
+  } 
 
   async get(ruta: string) {
     // Por defecto se hace una petición GET
