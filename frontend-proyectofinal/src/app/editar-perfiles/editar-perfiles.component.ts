@@ -70,16 +70,13 @@ export class EditarPerfilesComponent implements OnInit {
     if (!archivos.length) {
       return alert("Selecciona al menos una foto");
     }
-    console.log("Nombre de la imagen nueva: "+archivos[0].name+" Nombre de la imagen vieja: "+this.perfilModel.fotos[0].foto);
 
     if(archivos[0].name == this.perfilModel.fotos[0].foto){
-      console.log("Son la misma imagen, no hay cambio");
     }else{
       this.fotografia.foto = archivos[0].name;
       this.fotografia.id_perfil = this.perfilModel.id_perfil;
       this.perfilservice.actualizarimagen(this.fotografia);
     }
-
    this.cargando = false;
   }
 

@@ -4,10 +4,11 @@
 
 
     <table>
+        <tr>
         <td colspan="14" style="text-align: center;width: 1300px;">
             <p>Perfil</p>
         </td>
-        
+    </tr>
         <tr>
         <td colspan="6" rowspan="2" style="text-align: center;">
             <p>Acerca de: </p>
@@ -18,7 +19,7 @@
             <img *ngIf="fotoseleccionada"   [src]="resolverFoto(fotoseleccionada)" alt="">
         </td>
 
-        <td colspan="6" >
+        <td colspan="7" >
            <p>Detalles:</p> 
            <br>
            <p>Nombre</p>
@@ -41,7 +42,7 @@
             <p>{{like.likes}}</p>
             <button style="text-align: right;"(click)="editarlikes(like)">Dar like</button>
         </td>
-        <td colspan="8">
+        <td colspan="7">
             <p>Dislikes</p>
             <p>{{like.dislikes}}</p>
             <button style="text-align: right;" (click)="editardislikes(like)">Dar dislike</button>

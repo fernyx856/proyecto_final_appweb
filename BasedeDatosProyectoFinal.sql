@@ -36,7 +36,7 @@ CREATE TABLE `fotos_perfiles` (
 
 LOCK TABLES `fotos_perfiles` WRITE;
 /*!40000 ALTER TABLE `fotos_perfiles` DISABLE KEYS */;
-INSERT INTO `fotos_perfiles` VALUES (1,'spider.jpg'),(2,'batman.jpg'),(3,'flash.jpg');
+INSERT INTO `fotos_perfiles` VALUES (1,'spider.jpg'),(2,'batman.jpg');
 /*!40000 ALTER TABLE `fotos_perfiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `perfil` (
   `acercade` varchar(100) NOT NULL,
   PRIMARY KEY (`id_perfil`),
   KEY `fk` (`id_perfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'Peter','Parker','Parker',16,'New York','Spider-Man'),(2,'Bruce','Wayne','Wayne',30,'Ciudad Gotica','Batman'),(3,'Barry','Allen','West',21,'Star City','Flash'),(36,'Tony','Stark','Stark',30,'New York','Iron Man'),(41,'hal ','jordan','jordan',24,'Coast city','Linterna verde'),(42,'Steve ','Rogers','Rogers',32,'Brooklyn','Capitan America'),(43,'peter','a','a',12,'a','a'),(44,'a','a','a',1,'a','a'),(45,'a','a','a',1,'a','a'),(46,'a','a','a',1,'a','a'),(47,'a','a','a',1,'a','a'),(48,'a','a','a',1,'aa','a'),(49,'b','b','b',1,'b','b');
+INSERT INTO `perfil` VALUES (1,'Peter','Parker','Parker',16,'New York','Spider-Man'),(2,'Bruce','Wayne','Wayne',30,'Ciudad Gotica','Batman');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +81,8 @@ CREATE TABLE `tabla_likes` (
   `id_perfil` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
   `dislikes` int(11) NOT NULL,
-  PRIMARY KEY (`id_perfil`)
+  PRIMARY KEY (`id_perfil`),
+  CONSTRAINT `fk_id_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -91,7 +92,7 @@ CREATE TABLE `tabla_likes` (
 
 LOCK TABLES `tabla_likes` WRITE;
 /*!40000 ALTER TABLE `tabla_likes` DISABLE KEYS */;
-INSERT INTO `tabla_likes` VALUES (1,0,0);
+INSERT INTO `tabla_likes` VALUES (1,4,3),(2,5,0);
 /*!40000 ALTER TABLE `tabla_likes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -104,4 +105,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-06 16:52:39
+-- Dump completed on 2021-12-08 18:57:56
