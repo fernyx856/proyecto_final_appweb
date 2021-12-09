@@ -59,7 +59,6 @@ export class AgregarPerfilesComponent implements OnInit {
     const fd = new FormData();
 
     for (let x = 0; x < archivos.length; x++) {
-       fd.append(foto_${x}, archivos[x])
        console.log(archivos[x]);
        fd.append(`foto_${x}`,archivos[x])
      }
