@@ -56,16 +56,16 @@ export class AgregarPerfilesComponent implements OnInit {
     
     this.fotografia.foto = archivos[0].name;
     this.fotografia.id_perfil = idperfilguardado;
-    //const fd = new FormData();
+    const fd = new FormData();
 
-    //for (let x = 0; x < archivos.length; x++) {
-      // fd.append(foto_${x}, archivos[x])
-      // console.log(archivos[x]);
-       //fd.append(`foto_${x}`,archivos[x])
-     //}
-    // fd.append("id_perfil", idperfilguardado);
-     //const respuesta = await this.perfilService.agregarFotosDePerfil(fd);
-    const respuesta = this.perfilService.agregarfotodeperfil(this.fotografia);
+    for (let x = 0; x < archivos.length; x++) {
+       fd.append(foto_${x}, archivos[x])
+       console.log(archivos[x]);
+       fd.append(`foto_${x}`,archivos[x])
+     }
+     fd.append("id_perfil", idperfilguardado);
+     const respuesta = await this.perfilService.agregarFotosDePerfil(fd);
+    //const respuesta = this.perfilService.agregarfotodeperfil(this.fotografia);
 
     this.snackbar.open("Perfil guardado", "", {
       duration: 1500,
