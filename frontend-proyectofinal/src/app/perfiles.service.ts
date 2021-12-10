@@ -51,8 +51,8 @@ export class PerfilesService {
     return await this.http.post("/perfileditar",perfil);
   }
 
-  public async actualizarimagen(fotoperfil:fotoperfil){
-    return await this.http.post("/editarfoto",fotoperfil);
+  public async actualizarimagen(fotos:FormData){
+    return await this.http.formdata("/editarfoto",fotos);
   }
 
   public async actualizarLikes(like : likes){

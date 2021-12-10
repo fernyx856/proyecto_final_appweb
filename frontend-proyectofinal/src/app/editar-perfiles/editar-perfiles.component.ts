@@ -68,15 +68,20 @@ export class EditarPerfilesComponent implements OnInit {
    this.perfilservice.actualizarPerfil(perfil);
    let archivos = this.foto!.nativeElement.files;
     if (!archivos.length) {
-      return alert("Selecciona al menos una foto");
+      
+    } else {
+    
+    const fd = new FormData();
+    for (let x = 0; x < archivos.length; x++) {
+      console.log(archivos[x]);
+      fd.append(`foto_${x}`,archivos[x])
     }
+    fd.append("id_perfil", this.perfilModel.id_perfil);
+   const respuesta = await this.perfilservice.actualizarimagen(fd);
+  }
 
-    if(archivos[0].name == this.perfilModel.fotos[0].foto){
-    }else{
-      this.fotografia.foto = archivos[0].name;
-      this.fotografia.id_perfil = this.perfilModel.id_perfil;
-      this.perfilservice.actualizarimagen(this.fotografia);
-    }
+
+
    this.cargando = false;
   }
 

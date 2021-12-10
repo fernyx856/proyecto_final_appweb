@@ -21,7 +21,7 @@ app.delete("/perfil", async (req, res) => {
 
 
   app.post('/fotos_perfil', (req, res) => {
-    console.log(req+" REQ1");
+    console.log(req.body);
     const form = formidable({
       multiples: true,
       uploadDir: DIRECTORIO_FOTOS,
@@ -75,11 +75,45 @@ app.delete("/perfil", async (req, res) => {
     res.json(respuesta);
   })
 
-  app.post('/editarfoto',async(req,res)=>{
+  /*app.post('/editarfoto',async(req,res)=>{
     const perfil = req.body;
     const respuesta = await perfilModel.actualizarimagen(perfil.id_perfil,perfil.foto);
     res.json(respuesta);
-  })
+  })*/
+
+  app.post('/editarfoto', (req, res) => {
+    const form = formidable({
+      multiples: true,
+      uploadDir: DIRECTORIO_FOTOS,
+    });
+    
+  
+    form.parse(req, async (err, fields, files) => {
+      const idPerfil = fields.id_perfil;
+      console.log(fields)
+      console.log(files)
+      console.log("Aqui entre a editar");
+      for (let clave in files) {
+        const file = files[clave];
+        const nombreArchivo = file.name;
+        await perfilModel.actualizarimagen(idPerfil, nombreArchivo)
+      }
+    });
+  
+    form.on("fileBegin", (name, file) => {
+      const extension = path.extname(file.name);
+      const nuevoNombre = uuidv4().concat(extension);
+      file.path = path.join(DIRECTORIO_FOTOS, nuevoNombre);
+      file.name = nuevoNombre;
+    })
+  
+    form.on("end", () => {
+      res.json({
+        respuesta: true,
+      })
+    })
+  
+  });
 
 
   app.post('/perfil', async (req, res) => {
